@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>China Delegationsreise 2026 - Countdown</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif;">
+    
+    <div style="background-color: #F78A27; color: white; padding: 20px; text-align: center; border-radius: 8px;">
+        <h3 style="margin: 0 0 15px 0; font-size: 1.4em;">China Delegationsreise 2026</h3>
+        
+        <div id="countdown" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+            <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 5px; min-width: 60px;">
+                <div id="days" style="font-size: 1.8em; font-weight: bold;">000</div>
+                <div style="font-size: 0.8em;">TAGE</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 5px; min-width: 60px;">
+                <div id="hours" style="font-size: 1.8em; font-weight: bold;">00</div>
+                <div style="font-size: 0.8em;">STD</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 5px; min-width: 60px;">
+                <div id="minutes" style="font-size: 1.8em; font-weight: bold;">00</div>
+                <div style="font-size: 0.8em;">MIN</div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 15px; font-size: 0.9em; opacity: 0.9;">20. Juni 2026</div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date('June 20, 2026 00:00:00 GMT+0200');
+            const now = new Date();
+            const diff = targetDate.getTime() - now.getTime();
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+                document.getElementById('days').textContent = String(days).padStart(3, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            } else {
+                document.getElementById('countdown').innerHTML = '<div style="font-size: 1.5em;">🎉 Die Reise hat begonnen! 🎉</div>';
+            }
+        }
+
+        // Sofort ausführen
+        updateCountdown();
+        
+        // Jede Minute aktualisieren
+        setInterval(updateCountdown, 60000);
+    </script>
+</body>
+</html>
